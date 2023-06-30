@@ -36,21 +36,27 @@
         p {
             margin: 5px 0;
         }
+        .calculation-note {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>nm(真空)とeVの単位変換</h1>
     <form onsubmit="return false;">
         <label for="number1">nm→eV:</label>
-        <input type="number" id="number1" name="number" oninput="divideBy1240('number1')"><span>(nm)</span>
-        <p id="result1"></p>
+        <input type="number" id="number1" name="number" value="" oninput="divideBy1240('number1')"><span>(nm)</span>
+        <p id="result1" class="initial-text">結果: 数字を入力してください。</p>
     </form>
 
     <form onsubmit="return false;">
         <label for="number2">eV→nm:</label>
-        <input type="number" id="number2" name="number" oninput="divideBy1240('number2')"><span>(eV)</span>
-        <p id="result2"></p>
+        <input type="number" id="number2" name="number" value="" oninput="divideBy1240('number2')"><span>(eV)</span>
+        <p id="result2" class="initial-text">結果: 数字を入力してください。</p>
     </form>
+
+    <p class="calculation-note">入力値を1239.842で割っています。</p>
 
     <script>
         function divideBy1240(numberId) {
@@ -67,10 +73,17 @@
                     resultText += additionalText2;
                 }
                 document.getElementById("result" + numberId.slice(-1)).innerHTML = resultText;
+                document.getElementById("result" + numberId.slice(-1)).classList.remove("initial-text");
             } else {
                 document.getElementById("result" + numberId.slice(-1)).innerHTML = "結果: 入力値が無効です";
+                document.getElementById("result" + numberId.slice(-1)).classList.add("initial-text");
             }
         }
+
+        window.onload = function() {
+            document.getElementById("result1").classList.add("initial-text");
+            document.getElementById("result2").classList.add("initial-text");
+        };
     </script>
 </body>
 </html>
