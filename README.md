@@ -1,2 +1,2 @@
-# evnm
-nmとeVの変換サイト
+# ghzmm
+GHzとmmの変換サイト
