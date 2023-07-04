@@ -65,8 +65,16 @@ p {
     </form>
 
     <p class="calculation-note">動作確認済み機種iPhone14proのみ。</p>
-
-    <script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/color-name/sw.js').then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
         function divideBy1240(numberId) {
             var number = document.getElementById(numberId).value;
             var result = 299.792458/ number;
